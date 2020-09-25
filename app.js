@@ -1,14 +1,24 @@
 // setting up the express requirement 
 const express = require('express')
 const app = express()
-// sending Hello World response
+const {exec}  = require('child_process');
+// Creating the route to run the command on terminal
 app.get('/', (req,res) => {
-    res.send('Hello World!')
+   
+  exec('open .', err =>{
+      if (err){
+        console.log(err);
+      }
+          
+      res.send('Opening the File Explorer');
+      console.log('Opening the File Explorer')
+      
+  })
+   
 
 })
 // initiating port 3000
 app.listen( 3000, () => {
     console.log ('Listening to port 3000')
-    // Loggin Hello World
-    console.log (' Hello World')
+
 })
